@@ -167,6 +167,9 @@
   .option-btn.opt-conge { color: var(--conge-text); }
   .option-btn.opt-conge.selected { background: var(--conge-bg); border-color: var(--conge-text); }
 
+  .option-btn.opt-repos { color: var(--repos-text); }
+  .option-btn.opt-repos.selected { background: var(--repos-bg); border-color: var(--repos-text); }
+
   .modal-footer {
     padding: 12px 20px 16px;
     border-top: 1px solid var(--border);
@@ -258,7 +261,8 @@ const OPTIONS = [
   { key: 'TRAVAIL_11', type: 'TRAVAIL', label: 'Travail — Matin/Midi', time: '11:00 - 20:00', cls: 'opt-travail' },
   { key: 'TRAVAIL_14', type: 'TRAVAIL', label: 'Travail — Après-midi/Soir', time: '14:30 - 23:30', cls: 'opt-travail' },
   { key: 'OFF',        type: 'OFF',    label: 'Journée OFF', time: '', cls: 'opt-off' },
-  { key: 'CONGE',      type: 'CONGE',  label: 'Congé payé', time: '', cls: 'opt-conge' }
+  { key: 'CONGE',      type: 'CONGE',  label: 'Congé payé', time: '', cls: 'opt-conge' },
+  { key: 'REPOS',      type: 'REPOS',  label: 'Repos hebdo', time: '', cls: 'opt-repos' }
 ];
 
 const DOW_LABELS = ['Lun.', 'Mar.', 'Mer.', 'Jeu.', 'Ven.', 'Sam.', 'Dim.'];
@@ -377,9 +381,7 @@ function renderCalendar(mIdx) {
       cell.appendChild(t);
     }
 
-    if (!isWeekend) {
-      cell.addEventListener('click', () => openModal(key, d, month, year));
-    }
+    cell.addEventListener('click', () => openModal(key, d, month, year));
 
     grid.appendChild(cell);
   }
